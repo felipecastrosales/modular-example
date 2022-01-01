@@ -1,4 +1,10 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
+
+import 'package:flutter_modular/flutter_modular.dart';
+
+import 'model/category_model_controller.dart';
 
 class CategoryPage extends StatefulWidget {
   final String? category;
@@ -20,8 +26,22 @@ class _CategoryPageState extends State<CategoryPage> {
         title: const Text('Category'),
       ),
       body: Center(
-        child: Text(
-          widget.category ?? 'Sem categoria enviada',
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              widget.category ?? 'Sem categoria enviada',
+            ),
+            TextButton(
+              onPressed: () {
+                var controller = Modular.get<CategoryModelController>();
+                developer.log('${controller.hashCode}');
+              },
+              child: Text(
+                widget.category ?? 'Sem categoria enviada',
+              ),
+            ),
+          ],
         ),
       ),
     );
