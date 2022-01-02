@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:modular_example/app/product/product_module.dart';
 
 import 'category_page.dart';
+import 'model/aleatory.dart';
 import 'model/category_model_controller.dart';
 import 'model/price_model.dart';
 
@@ -15,7 +16,14 @@ class CategoryModule extends Module {
         //   isSingleton: false,
         // ),
         Bind.lazySingleton(
-          (i) => PriceModel(),
+          (i) => Aleatory(),
+          export: true,
+        ),
+        Bind.lazySingleton(
+          (i) => PriceModel(
+            aleatory: i(),
+          ),
+          export: true,
         ),
         Bind.lazySingleton(
           (i) => CategoryModelController(
