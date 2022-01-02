@@ -18,7 +18,8 @@ class CategoryPage extends StatefulWidget {
   State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _CategoryPageState
+    extends ModularState<CategoryPage, CategoryModelController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +35,6 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
             TextButton(
               onPressed: () {
-                var controller = Modular.get<CategoryModelController>();
                 developer.log('${controller.hashCode}');
               },
               child: Text(
